@@ -1,0 +1,135 @@
+$primaryColour: #FFA31A;
+$primaryContrast: #124656;
+$primaryLight: #ffed7a;
+$navbarWidth: 300px;
+$navbarPadding: 100px;
+$EntryBoxWidth: 600px;
+$maxEntryBoxBodyHeight: 150px;
+$EntryBoxTitleWidth: 350px;
+$TagLabelTriangleWidth: 12px;
+$TagLabelTriangleHeight: 24px;
+$TagLabelRectPadding: 2px;
+$EntryBoxLabelMargin: 10px;
+$EntryPageWidth:1000px;
+
+div.navbar{
+    background-color: $primaryColour;
+    color: $primaryContrast;
+    font-family: Arial;
+
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    
+    padding-left: $navbarPadding;
+    box-sizing:border-box;
+    width: $navbarWidth;
+    height: 100%;
+}
+
+.EntryBoxMain{
+    display:flex;
+    flex-direction:column;
+    width:$EntryBoxWidth;
+    margin-bottom:20px;
+    border:1px solid black;
+    border-radius: 10px;
+    padding:10px;
+}
+
+.EntryBoxLabel{
+    margin-right: $EntryBoxLabelMargin;
+    border: 1px solid black;
+    border-radius:5px;
+    padding: $TagLabelRectPadding;
+    background-color:$primaryLight;
+
+    font: 0.9em Arial;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.EntryBoxViewLink{
+    border: 1px solid black;
+    border-radius:5px;
+    padding: 5px;
+    background-color:$primaryLight;
+
+    font: 1.2em Arial;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-left:80px;
+    cursor:pointer;
+}
+
+.EntryBoxTitle{
+    width:$EntryBoxTitleWidth;
+    margin-bottom:5px;
+    font:2em Arial;
+    font-weight:bold;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.Divider1{
+    border-top:1px solid $primaryContrast;
+    width:100%;
+    margin:5px 0 5px 0;
+}
+
+.EntryBoxContent{
+    width:100%;
+    max-height:$maxEntryBoxBodyHeight;
+    overflow: hidden;
+    line-height: 200%;
+    font:15pt Arial;
+    text-align:justify;
+    text-justify:inter-word;
+}
+
+.TagLabelTriangle{
+    float:left;
+    width:0;
+    height:0;
+    border-right:($TagLabelTriangleWidth) solid ($primaryColour); 
+    border-top:($TagLabelTriangleHeight)/2 solid transparent;
+    border-bottom:($TagLabelTriangleHeight)/2 solid transparent;
+}
+
+.TagLabelRect{
+    float:left;
+    height:$TagLabelTriangleHeight; 
+    background-color:$primaryColour; 
+    padding:$TagLabelRectPadding; 
+    box-sizing:border-box;
+    text-align:center;
+
+    font: 1em Arial;
+}
+
+.EntryPageMain{
+    width:$EntryPageWidth;
+}
+
+.EntryPageContent{
+    font:2em Arial;
+    width:100%;
+    text-align:justify;
+    text-justify:inter-word;
+}
+
+.EntryPageTitle{
+    font: 4em Arial;
+    font-weight: bold;
+}
+
+.link{
+    color: inherit;
+    text-decoration: none;
+}
