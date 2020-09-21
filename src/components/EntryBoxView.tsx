@@ -23,7 +23,7 @@ const EntryBoxView = ({data}:{data:EntryData}) => {
                 </div>
                 <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
                     <InfoLabel image={Directory("./calendar.png")} text={`${data.date[0]}/${data.date[1]}/${data.date[2]}`} marginCentre="3px"/>
-                    <InfoLabel image={Directory("./clock.png")} text={`${data.reading_time} ${data.reading_time==1?"minute":"minutes"}`} marginCentre="3px"/>
+                    <InfoLabel image={Directory("./clock.png")} text={`${data.reading_time} ${data.reading_time===1?"minute":"minutes"}`} marginCentre="3px"/>
                     {data.tags.map((s:string)=><TagLabel tag={s} marginRight="10px"/>)}
                 </div>
             </div>

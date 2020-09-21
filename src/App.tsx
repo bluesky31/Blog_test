@@ -21,7 +21,7 @@ function App() {
       }
   }
   for(const entry of data){
-    var title=entry.title.slice(0,10).replace(/\ /g,"-");
+    var title=entry.title.slice(0,10).replace(/ /g,"-");
     var original_title=title;
     var num = 1;
     while (address_set.has(title)){

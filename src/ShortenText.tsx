@@ -18,7 +18,7 @@ const ShortenText = (text:string) => {
     for (const i of words){
         const temp = getTextWidth(i);
         if (curWidth+temp>width){
-            if (curLine==maxLines-1){
+            if (curLine===maxLines-1){
                 finalText+=i;
                 var extra=curWidth+temp-width;
                 while(extraSpace+extra>0){
