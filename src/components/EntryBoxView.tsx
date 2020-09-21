@@ -11,7 +11,9 @@ const EntryBoxView = ({data}:{data:EntryData}) => {
     return (
     <div className="EntryBoxMain">
         <div style={{display:"flex",flexDirection:"row"}}>
-            <Icon width="75px" height="75px" image={Directory("./circle.jpg")}/>
+            <div style={{marginRight:"10px"}}>
+                <Icon width="75px" height="75px" image={Directory("./"+data.image)}/>
+            </div>
             <div style={{display:"flex",flexDirection:"column"}}>
                 <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
                     <div className="EntryBoxTitle">

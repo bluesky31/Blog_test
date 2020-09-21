@@ -1,2 +1,2 @@
-const Directory=require.context("./images");
+const Directory=require.context("./images",true);
 export default Directory;

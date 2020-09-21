@@ -3,7 +3,7 @@ import random
 
 chars = "abcdefghijklmnopqrstuvwxyz"
 word_len = 10
-tags = ["first","second","third"]
+tags = ["tag1","tag2","tag3","tag4","tag5"]
 
 def rand_word():
     word=""
@@ -19,7 +19,7 @@ def rand_paragraph(n):
 
 data = []
 
-for i in range(50):
+for i in range(100):
     data.append({})
     x=data[i]
     x["image"]="./circle.jpg"
@@ -32,7 +32,8 @@ for i in range(50):
         for i in tags:
             if random.uniform(0,1)<0.5:
                  x["tags"].append(i)
-    x["blog_content"]=rand_paragraph(random.randrange(5,800))
+    x["blog_content"]=rand_paragraph(random.randrange(15,20)) if random.randrange(0,2) == 0 else rand_paragraph(random.randrange(10,800))
+    x["image"]="blog_media/img"+str(random.randrange(0,9))+".jpg"
 
 with open("data-entries.json","w") as f:
     json.dump(data,f)
