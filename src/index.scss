@@ -1,18 +1,137 @@
 $primaryColour: #FFA31A;
 $primaryContrast: #124656;
+$primaryContrast2: #1A76FF;
 $primaryLight: #ffed7a;
+$primaryLight2: #fff2bd;
+$secondaryLight: #feebc8;
+$secondaryDark: #9c4221;
+$lightContrast: #d6c187;
 $navbarWidth: 300px;
 $navbarPadding: 100px;
-$EntryBoxWidth: 600px;
+$EntryBoxWidth: 700px;
 $maxEntryBoxBodyHeight: 150px;
 $EntryBoxTitleWidth: 350px;
 $TagLabelTriangleWidth: 12px;
 $TagLabelTriangleHeight: 24px;
 $TagLabelRectPadding: 2px;
+$TagLabelBorderRadius: 5px;
 $EntryBoxLabelMargin: 10px;
 $EntryPageWidth:1000px;
+$EntryPageMarginLeft:50px;
 
-div.navbar{
+html{
+    background-color: $primaryLight2;
+}
+
+.App{
+    overflow: auto;
+    //padding-left: 40px;
+    width: 100%;
+    //display:flex;
+    //flex-direction:row;
+    //font: 3em "Times New Roman";
+}
+
+.Home{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width: $EntryBoxWidth;
+    margin-left: 40px;
+    font: 40px "Times New Roman";
+    h1{
+        margin: 10px 0 8px 0;
+        font-weight: bold;
+        font: 45px Arial;
+    }
+    p{
+        margin: 0 0 10px 0;
+        font: 20px Arial;
+    }
+}
+
+.About{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width: $EntryBoxWidth;
+    margin-left: 40px;
+    font: 40px "Times New Roman";
+    h1{
+        margin: 10px 0 8px 0;
+        font-weight: bold;
+        font: 45px Arial;
+    }
+    p{
+        margin: 0 0 10px 0;
+        font: 20px Arial;
+    }
+}
+
+.AboutTextBox{
+    text-align: start;
+    width: $EntryBoxWidth;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow: 1.5px 4px $primaryContrast;
+    margin: 0 0 15px 0;
+    p{
+        margin: 0 0 10px 0;
+        font: 20px Arial;
+        color: black;
+    }
+}
+
+.Projects{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width: $EntryBoxWidth;
+    margin-left: 40px;
+    font: 40px "Times New Roman";
+    h1{
+        margin: 5px 0 8px 0;
+        font-weight: bold;
+        font: 45px Arial;
+    }
+}
+
+.Blog{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width: $EntryBoxWidth;
+    margin-left: 40px;
+    font: 40px "Times New Roman";
+    h1{
+        margin: 5px 0 8px 0;
+        font-weight: bold;
+        font: 45px Arial;
+    }
+}
+
+.TagSpecific{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width: $EntryBoxWidth;
+    margin-left: 40px;
+    font: 40px "Times New Roman";
+    h1{
+        margin: 10px 0 8px 0;
+        font-weight: bold;
+        font: 30px Arial;
+    }
+}
+
+.Navbar{
     background-color: $primaryColour;
     color: $primaryContrast;
     font-family: Arial;
@@ -20,22 +139,44 @@ div.navbar{
     position: fixed;
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items:center;
     
-    padding-left: $navbarPadding;
+    //padding-left: $navbarPadding;
     box-sizing:border-box;
     width: $navbarWidth;
     height: 100%;
+    p{
+        margin: 15px 0 15px 0;
+        font: 18px Arial;
+        font-style:italic;
+    }
+}
+
+.NavbarTitle{
+    margin: 15px 0 15px 0;
+    font: 30px Arial;
+    cursor: pointer;
+    color: $primaryContrast;
+}
+
+.NavbarTitleHover{
+    color: $primaryLight2;
+    transform: scale(1.1);
 }
 
 .EntryBoxMain{
     display:flex;
     flex-direction:column;
+    align-items: flex-start;
+    background-color: white;
     width:$EntryBoxWidth;
     margin-bottom:20px;
-    border:1px solid black;
+    box-sizing: border-box;
+    //border:1px solid black;
     border-radius: 10px;
     padding:10px;
+    box-shadow: 1.5px 4px $primaryContrast;
+    text-align:left;
 }
 
 .EntryBoxLabel{
@@ -45,7 +186,7 @@ div.navbar{
     padding: $TagLabelRectPadding;
     background-color:$primaryLight;
 
-    font: 0.9em Arial;
+    font: 15px Arial; 
 
     display:flex;
     flex-direction:row;
@@ -53,12 +194,12 @@ div.navbar{
 }
 
 .EntryBoxViewLink{
-    border: 1px solid black;
     border-radius:5px;
+    box-shadow: 0.5px 1.5px $primaryContrast;
     padding: 5px;
     background-color:$primaryLight;
 
-    font: 1.2em Arial;
+    font: 20px Arial;
 
     display:flex;
     flex-direction:row;
@@ -67,18 +208,69 @@ div.navbar{
     cursor:pointer;
 }
 
+.EntryBoxViewLinkHover{
+    color: $primaryContrast;
+    background-color:$primaryColour;
+}
+
 .EntryBoxTitle{
     width:$EntryBoxTitleWidth;
-    margin-bottom:5px;
-    font:2em Arial;
+    margin-bottom:10px;
+    font:40px Arial;
+    color: $primaryContrast;
+    font-weight:bold;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    cursor: pointer;
+}
+.EntryBoxTitleHover{
+    color: black;
+}
+
+.ProjectBoxTitle{
+    width:$EntryBoxTitleWidth;
+    color: black;
+    font:40px Arial;
+    margin-bottom:0px;
     font-weight:bold;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
 }
 
+.ProjectBoxDescription{
+    font:20px arial;
+    margin-bottom:7px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.ProjectLabelContainer{
+    height:$TagLabelTriangleHeight;
+    background-color:$secondaryLight;
+    text-align:center;
+    padding:$TagLabelRectPadding;
+
+    font: 16px Arial;
+    
+    border-radius: $TagLabelBorderRadius;
+    box-shadow: 0.5px 1.5px $primaryColour;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
 .Divider1{
     border-top:1px solid $primaryContrast;
+    width:100%;
+    margin:5px 0 5px 0;
+}
+
+.Divider2{
+    border-top:1px solid $lightContrast;
     width:100%;
     margin:5px 0 5px 0;
 }
@@ -88,11 +280,11 @@ div.navbar{
     max-height:$maxEntryBoxBodyHeight;
     overflow: hidden;
     line-height: 200%;
-    font:15pt Arial;
+    font:22px Arial;
     text-align:justify;
     text-justify:inter-word;
 }
-
+/*
 .TagLabelTriangle{
     float:left;
     width:0;
@@ -111,21 +303,91 @@ div.navbar{
     text-align:center;
 
     font: 1em Arial;
+}*/
+
+.TagLabelContainer{
+    height:$TagLabelTriangleHeight;
+    background-color:$secondaryLight;
+    text-align:center;
+    padding:$TagLabelRectPadding;
+
+    font: 16px Arial;
+    
+    border-radius: $TagLabelBorderRadius;
+    box-shadow: 0.5px 1.5px $primaryColour;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center; 
+}
+
+.TagLabelContainerHover{
+    background-color:$primaryColour;
+    box-shadow: 0.5px 1.5px $primaryContrast;
+    color: $primaryContrast;
+}
+
+.NavLabelContainer{
+    height:$TagLabelTriangleHeight;
+    background-color:$primaryLight;
+    text-align:center;
+    padding:$TagLabelRectPadding;
+    display:inline-block;
+
+    font: 16px Arial;
+    
+    border-radius: $TagLabelBorderRadius;
+    box-shadow: 0.5px 1.5px $primaryContrast;
+
+    margin: 25px 0 35px 0;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.NavLabelContainerHover{
+    background-color:$primaryColour;
+    color: $primaryContrast;
+    box-shadow: 0.5px 1.5px $secondaryDark;
+}
+
+.NavbarLink{
+    height:$TagLabelTriangleHeight;
+    text-align:center;
+    padding:$TagLabelRectPadding;
+    display:inline-block;
+
+    font: 16px Arial;
+    color: $primaryContrast;
+    
+    margin: 10px 0 0 0;
+
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.NavbarLinkHover{
+    color: $primaryLight2;
+    transform: scale(1.2);
 }
 
 .EntryPageMain{
     width:$EntryPageWidth;
+    margin-left:$EntryPageMarginLeft;
+    margin-top:20px;
 }
 
 .EntryPageContent{
-    font:2em Arial;
+    font:25px Arial;
     width:100%;
     text-align:justify;
     text-justify:inter-word;
 }
 
 .EntryPageTitle{
-    font: 4em Arial;
+    font: 40px Arial;
     font-weight: bold;
 }
 

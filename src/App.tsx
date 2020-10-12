@@ -2,49 +2,37 @@ import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import './App.css';
 import Home from "./components/Home";
+import Projects from "./components/Projects";
+import Blog from "./components/Blog";
 import About from "./components/About";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import TagRoot from "./components/TagRoot";
 import TagSpecific from "./components/TagSpecific";
+import {tag_map, blog_data} from "./Data";
 import EntryData from "./EntryData";
 import EntryFullView from "./components/EntryFullView";
+import {useLocation} from "react-router-dom"
 
 function App() {
-  const data:EntryData[] = require("./data-entries.json");
-  const tag_map:Map<string,EntryData[]> = new Map();
-  const address_set:Set<string>=new Set();
-  for(const entry of data){
-      for (const tag of entry.tags){
-          if (!tag_map.has(tag)) tag_map.set(tag,[]); 
-          tag_map.get(tag)?.push(entry);
-      }
-  }
-  for(const entry of data){
-    var title=entry.title.slice(0,10).replace(/ /g,"-");
-    var original_title=title;
-    var num = 1;
-    while (address_set.has(title)){
-      num++;
-      title=original_title+num;
-    }
-    address_set.add(title);
-    entry.address=title;
-  }
+  const location = useLocation();
   return (
-    <div style={{display:"flex",flexDirection:"row"}}>
-      <Navbar/>
-      <div style={{marginLeft:"400px"}}>
+    <div className="App">
+      <Navbar location={location.pathname}/>
+      <div style={{marginLeft:"300px"}}>
         <Switch>
-            <Route path='/' component={()=>(<Home data={data}/>)} exact/>
+            <Route path='/' component={()=>(<Home/>)} exact/>
             <Route path='/about' component={About} exact/>
-            <Route path="/tags" component={()=><TagRoot tag_map={tag_map}/>} exact/>
+            <Route path="/blog/tags" component={()=><TagRoot />} exact/>
+            <Route path="/projects" component={()=><Projects/>} exact/>
+            <Route path="/blog" component={()=><Blog/>} exact/>
             {Array.from(tag_map.keys()).map((n:string)=>
-              <Route path={"/tags/"+n} component={()=><TagSpecific tag={n} entries={tag_map.get(n)!}/>}/>
+              <Route path={"/blog/tags/"+n} component={()=><TagSpecific tag={n} entries={tag_map.get(n)!}/>}/>
               )}
-            {data.map((n:EntryData)=>
-            <Route path={"/blog/"+n.address} component={()=><EntryFullView data={n}/>}/>
+            {blog_data.map((n:EntryData)=>
+            <Route path={"/blog/"+n.address} component={()=><EntryFullView data={n}/>} exact/>
             )}
+
             <Route component={Error}/>
         </Switch>
       </div>

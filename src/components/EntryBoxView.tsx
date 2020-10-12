@@ -1,13 +1,14 @@
 import React from "react";
 import EntryData from "../EntryData";
 import Icon from "./Icon";
-import TagLabel from "./TagLabel";
+import Label from "./Label";
 import ShortenText from "../ShortenText";
-import InfoLabel from "./InfoLabel";
 import Directory from "../Directory";
 import History from "../History";
+import TagLabel from "./TagLabel";
+import PersistentLink from "./PersistentLink";
 
-const EntryBoxView = ({data}:{data:EntryData}) => {
+const EntryBoxView = ({data,currentTag="__none__"}:{data:EntryData,currentTag?:string}) => {
     return (
     <div className="EntryBoxMain">
         <div style={{display:"flex",flexDirection:"row"}}>
@@ -15,18 +16,11 @@ const EntryBoxView = ({data}:{data:EntryData}) => {
                 <Icon width="75px" height="75px" image={Directory("./"+data.image)}/>
             </div>
             <div style={{display:"flex",flexDirection:"column"}}>
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
-                    <div className="EntryBoxTitle">
-                        {data.title}
-                    </div>
-                    <div onClick={()=>{History.push("/blog/"+data.address)}}>
-                        <InfoLabel image={Directory("./linkArrow.png")} iconWidth="25px" iconHeight="25px" className="EntryBoxViewLink" text="View" marginCentre="5px"/>
-                    </div>
-                </div>
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
-                    <InfoLabel image={Directory("./calendar.png")} text={`${data.date[0]}/${data.date[1]}/${data.date[2]}`} marginCentre="3px"/>
-                    <InfoLabel image={Directory("./clock.png")} text={`${data.reading_time} ${data.reading_time===1?"minute":"minutes"}`} marginCentre="3px"/>
-                    {data.tags.map((s:string)=><TagLabel tag={s} marginRight="10px"/>)}
+                    <PersistentLink text={data.title} link={"/blog/"+data.address} className="EntryBoxTitle"/>
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+                    <Label image={Directory("./calendar.png")} text={`${data.date[0]}/${data.date[1]}/${data.date[2]}`} marginCentre="3px" className="EntryBoxLabel" active={false}/>
+                    <Label image={Directory("./clock.png")} text={`${data.reading_time} ${data.reading_time===1?"minute":"minutes"}`} marginCentre="3px" className="EntryBoxLabel" active={false}/>
+                    {data.tags.map((s:string)=><TagLabel text={s} currentTag={currentTag}/>)}
                 </div>
             </div>
         </div>

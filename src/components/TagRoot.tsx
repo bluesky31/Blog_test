@@ -1,14 +1,16 @@
 import React from "react";
-import EntryData from "../EntryData";
 import TagLabel from "./TagLabel";
+import {tag_map} from "../Data";
 
-const TagRoot = ({tag_map}:{tag_map:Map<string,EntryData[]>}) => {
-    return (<>
-        <div style={{marginBottom:"10px"}}>Tags:</div>
-        <div style={{display:"flex",flexDirection:"column"}}>
-        {Array.from(tag_map.keys()).map((n:string)=><div style={{marginBottom:"10px"}}><TagLabel tag={n}/></div>)}
+const TagRoot = () => {
+    return (<div className="TagSpecific">
+        <h1 style={{display:"inline-block"}}>
+            Group entries by tag:
+        </h1>
+        <div style={{display:"flex",flexDirection:"row",alignItems:"start",marginBottom:"10px"}}>
+            {Array.from(tag_map.keys()).map((s:string)=><div><TagLabel text={s}/></div>)}
         </div>
-    </>)
+    </div>)
 }
 
 export default TagRoot;
